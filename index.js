@@ -17,8 +17,6 @@ const datasourceJuggler = require('loopback-datasource-juggler');
 
 loopback.Connector = require('./lib/connectors/base-connector');
 loopback.Memory = require('./lib/connectors/memory');
-loopback.Mail = require('./lib/connectors/mail');
-loopback.Remote = require('loopback-connector-remote');
 
 /**
  * Types

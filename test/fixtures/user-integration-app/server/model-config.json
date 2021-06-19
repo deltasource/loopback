@@ -6,10 +6,6 @@
       "../../../../common/models"
     ]
   },
-  "Email": {
-    "dataSource": "mail",
-    "public": false
-  },
   "User": {
     "dataSource": "db",
     "public": true,

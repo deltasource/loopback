@@ -8,10 +8,6 @@ const g = require('../../lib/globalize');
 const loopback = require('../../');
 const client = loopback();
 const CartItem = require('./models').CartItem;
-const remote = loopback.createDataSource({
-  connector: loopback.Remote,
-  url: 'http://localhost:3000',
-});
 
 client.model(CartItem);
 CartItem.attachTo(remote);

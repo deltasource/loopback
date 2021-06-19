@@ -47,14 +47,11 @@ describe('loopback', function() {
         'Connector',
         'DataSource',
         'DateString',
-        'Email',
         'GeoPoint',
         'KeyValueModel',
-        'Mail',
         'Memory',
         'Model',
         'PersistedModel',
-        'Remote',
         'Role',
         'RoleMapping',
         'Route',
@@ -501,7 +498,6 @@ describe('loopback', function() {
 
     it('exports all built-in models', function() {
       const expectedModelNames = [
-        'Email',
         'User',
         'Application',
         'AccessToken',
