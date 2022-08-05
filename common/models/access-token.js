@@ -237,14 +237,14 @@ module.exports = function(AccessToken) {
       );
       assert(this.ttl !== 0, 'token.ttl must be not be 0');
       assert(this.ttl, 'token.ttl must exist');
-      const eternalTokensAllowed = !!(User && User.settings.allowEternalTokens);
-      if (!eternalTokensAllowed) {
-        assert(this.ttl >= -1, 'token.ttl must be >= -1');
-      }
 
       const AccessToken = this.constructor;
       const userRelation = AccessToken.relations.user; // may not be set up
       let User = userRelation && userRelation.modelTo;
+      const eternalTokensAllowed = !!(User && User.settings.allowEternalTokens);
+      if (!eternalTokensAllowed) {
+        assert(this.ttl >= -1, 'token.ttl must be >= -1');
+      }
 
       // redefine user model if accessToken's principalType is available
       if (this.principalType) {
