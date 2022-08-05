@@ -237,7 +237,10 @@ module.exports = function(AccessToken) {
       );
       assert(this.ttl !== 0, 'token.ttl must be not be 0');
       assert(this.ttl, 'token.ttl must exist');
-      assert(this.ttl >= -1, 'token.ttl must be >= -1');
+      const eternalTokensAllowed = !!(User && User.settings.allowEternalTokens);
+      if (!eternalTokensAllowed) {
+        assert(this.ttl >= -1, 'token.ttl must be >= -1');
+      }
 
       const AccessToken = this.constructor;
       const userRelation = AccessToken.relations.user; // may not be set up
@@ -257,7 +260,6 @@ module.exports = function(AccessToken) {
       const created = this.created.getTime();
       const elapsedSeconds = (now - created) / 1000;
       const secondsToLive = this.ttl;
-      const eternalTokensAllowed = !!(User && User.settings.allowEternalTokens);
       const isEternalToken = secondsToLive === -1;
       const isValid = isEternalToken ?
         eternalTokensAllowed :
